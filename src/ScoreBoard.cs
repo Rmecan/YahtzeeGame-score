@@ -3,50 +3,50 @@ namespace YahtzeeGame {
     /// 現在の得点を記録しておくクラス
     /// </summary>
     class ScoreBoard {
-        // 各役の得点を格納するプロパティ
-        private int ace;
-        private bool aceToken = false;
+        // 各役の得点を格納するフィールド
+        private int _ace;
+        private bool _aceToken = false;
 
-        private int duo;
-        private bool duoToken = false;
+        private int _duo;
+        private bool _duoToken = false;
 
-        private int tray;
-        private bool trayToken = false;
+        private int _tray;
+        private bool _trayToken = false;
 
-        private int four;
-        private bool fourToken = false;
+        private int _four;
+        private bool _fourToken = false;
 
-        private int five;
-        private bool fiveToken = false;
+        private int _five;
+        private bool _fiveToken = false;
 
-        private int six;
-        private bool sixToken = false;
+        private int _six;
+        private bool _sixToken = false;
 
-        private int choice;
-        private bool choiceToken = false;
+        private int _choice;
+        private bool _choiceToken = false;
 
-        private int fourDice;
-        private bool fourDiceToken = false;
+        private int _fourDice;
+        private bool _fourDiceToken = false;
 
-        private int fullHouse;
-        private bool fullHouseToken = false;
+        private int _fullHouse;
+        private bool _fullHouseToken = false;
 
-        private int smallStraight;
-        private bool smallStraightToken = false;
+        private int _smallStraight;
+        private bool _smallStraightToken = false;
 
-        private int bigStraight;
-        private bool bigStraightToken = false;
+        private int _bigStraight;
+        private bool _bigStraightToken = false;
 
-        private int yahtzee;
-        private bool yahtzeeToken = false;
+        private int _yahtzee;
+        private bool _yahtzeeToken = false;
 
         // 各得点のプロパティ
         public int Ace {
-            get { return ace; }
+            get { return _ace; }
             set {
-                if (!aceToken) {
-                    ace = value;
-                    aceToken = true;
+                if (!_aceToken) {
+                    _ace = value;
+                    _aceToken = true;
                 } else {
                     Console.WriteLine("Aceの得点は一度設定されたら変更できません。");
                 }
@@ -54,11 +54,11 @@ namespace YahtzeeGame {
         }
 
         public int Duo {
-            get { return duo; }
+            get { return _duo; }
             set {
-                if (!duoToken) {
-                    duo = value;
-                    duoToken = true;
+                if (!_duoToken) {
+                    _duo = value;
+                    _duoToken = true;
                 } else {
                     Console.WriteLine("Duoの得点は一度設定されたら変更できません。");
                 }
@@ -66,11 +66,11 @@ namespace YahtzeeGame {
         }
 
         public int Tray {
-            get { return tray; }
+            get { return _tray; }
             set {
-                if (!trayToken) {
-                    tray = value;
-                    trayToken = true;
+                if (!_trayToken) {
+                    _tray = value;
+                    _trayToken = true;
                 } else {
                     Console.WriteLine("Trayの得点は一度設定されたら変更できません。");
                 }
@@ -78,11 +78,11 @@ namespace YahtzeeGame {
         }
 
         public int Four {
-            get { return four; }
+            get { return _four; }
             set {
-                if (!fourToken) {
-                    four = value;
-                    fourToken = true;
+                if (!_fourToken) {
+                    _four = value;
+                    _fourToken = true;
                 } else {
                     Console.WriteLine("Fourの得点は一度設定されたら変更できません。");
                 }
@@ -90,11 +90,11 @@ namespace YahtzeeGame {
         }
 
         public int Five {
-            get { return five; }
+            get { return _five; }
             set {
-                if (!fiveToken) {
-                    five = value;
-                    fiveToken = true;
+                if (!_fiveToken) {
+                    _five = value;
+                    _fiveToken = true;
                 } else {
                     Console.WriteLine("Fiveの得点は一度設定されたら変更できません。");
                 }
@@ -102,11 +102,11 @@ namespace YahtzeeGame {
         }
 
         public int Six {
-            get { return six; }
+            get { return _six; }
             set {
-                if (!sixToken) {
-                    six = value;
-                    sixToken = true;
+                if (!_sixToken) {
+                    _six = value;
+                    _sixToken = true;
                 } else {
                     Console.WriteLine("Sixの得点は一度設定されたら変更できません。");
                 }
@@ -114,11 +114,11 @@ namespace YahtzeeGame {
         }
 
         public int Choice {
-            get { return choice; }
+            get { return _choice; }
             set {
-                if (!choiceToken) {
-                    choice = value;
-                    choiceToken = true;
+                if (!_choiceToken) {
+                    _choice = value;
+                    _choiceToken = true;
                 } else {
                     Console.WriteLine("Choiceの得点は一度設定されたら変更できません。");
                 }
@@ -126,11 +126,11 @@ namespace YahtzeeGame {
         }
 
         public int FourDice {
-            get { return fourDice; }
+            get { return _fourDice; }
             set {
-                if (!fourDiceToken) {
-                    fourDice = value;
-                    fourDiceToken = true;
+                if (!_fourDiceToken) {
+                    _fourDice = value;
+                    _fourDiceToken = true;
                 } else {
                     Console.WriteLine("FourDiceの得点は一度設定されたら変更できません。");
                 }
@@ -138,11 +138,11 @@ namespace YahtzeeGame {
         }
 
         public int FullHouse {
-            get { return fullHouse; }
+            get { return _fullHouse; }
             set {
-                if (!fullHouseToken) {
-                    fullHouse = value;
-                    fullHouseToken = true;
+                if (!_fullHouseToken) {
+                    _fullHouse = value;
+                    _fullHouseToken = true;
                 } else {
                     Console.WriteLine("FullHouseの得点は一度設定されたら変更できません。");
                 }
@@ -150,11 +150,11 @@ namespace YahtzeeGame {
         }
 
         public int SmallStraight {
-            get { return smallStraight; }
+            get { return _smallStraight; }
             set {
-                if (!smallStraightToken) {
-                    smallStraight = value;
-                    smallStraightToken = true;
+                if (!_smallStraightToken) {
+                    _smallStraight = value;
+                    _smallStraightToken = true;
                 } else {
                     Console.WriteLine("SmallStraightの得点は一度設定されたら変更できません。");
                 }
@@ -162,11 +162,11 @@ namespace YahtzeeGame {
         }
 
         public int BigStraight {
-            get { return bigStraight; }
+            get { return _bigStraight; }
             set {
-                if (!bigStraightToken) {
-                    bigStraight = value;
-                    bigStraightToken = true;
+                if (!_bigStraightToken) {
+                    _bigStraight = value;
+                    _bigStraightToken = true;
                 } else {
                     Console.WriteLine("BigStraightの得点は一度設定されたら変更できません。");
                 }
@@ -174,21 +174,35 @@ namespace YahtzeeGame {
         }
 
         public int Yahtzee {
-            get { return yahtzee; }
+            get { return _yahtzee; }
             set {
-                if (!yahtzeeToken) {
-                    yahtzee = value;
-                    yahtzeeToken = true;
+                if (!_yahtzeeToken) {
+                    _yahtzee = value;
+                    _yahtzeeToken = true;
                 } else {
                     Console.WriteLine("Yahtzeeの得点は一度設定されたら変更できません。");
                 }
             }
         }
         
+        // Tokenプロパティを外部から読み取れるようにする
+        public bool AceToken => _aceToken;
+        public bool DuoToken => _duoToken;
+        public bool TrayToken => _trayToken;
+        public bool FourToken => _fourToken;
+        public bool FiveToken => _fiveToken;
+        public bool SixToken => _sixToken;
+        public bool ChoiceToken => _choiceToken;
+        public bool FourDiceToken => _fourDiceToken;
+        public bool FullHouseToken => _fullHouseToken;
+        public bool SmallStraightToken => _smallStraightToken;
+        public bool BigStraightToken => _bigStraightToken;
+        public bool YahtzeeToken => _yahtzeeToken;
+
         // ボーナス（Ace, Duo, Tray, Four, Five, Sixの合計が63点以上ならボーナス35点）
-        public int Bonus => (Ace + Duo + Tray + Four + Five + Six >= 63) ? 35 : 0;
+        public int Bonus => (_ace + _duo + _tray + _four + _five + _six >= 63) ? 35 : 0;
 
         // 合計得点（各役の得点の合計 + ボーナス）
-        public int TotalScore => Ace + Duo + Tray + Four + Five + Six + Choice + FourDice + FullHouse + SmallStraight + BigStraight + Yahtzee + Bonus;
+        public int TotalScore => _ace + _duo + _tray + _four + _five + _six + _choice + _fourDice + _fullHouse + _smallStraight + _bigStraight + _yahtzee + Bonus;
     }
 }
