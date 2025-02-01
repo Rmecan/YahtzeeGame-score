@@ -1,8 +1,11 @@
 using System;
 
-namespace YahtzeeGame {
-    class Program {
-        static void Main(string[] args) {
+namespace YahtzeeGame
+{
+    class Program
+    {
+        static void Main(string[] args)
+        {
 
             // ゲームの説明
             Console.WriteLine("ようこそ！");
@@ -13,7 +16,8 @@ namespace YahtzeeGame {
             int turnCount = 1;
             ScoreBoard scoreBoard = new ScoreBoard(); // スコアボードのインスタンス作成
 
-            while (true) {
+            while (true)
+            {
                 // ターン数の表示
                 Console.WriteLine($"{turnCount++}目");
 
@@ -31,13 +35,17 @@ namespace YahtzeeGame {
                 // 役の選択
                 bool isInvalid = false;  // 無効な選択肢があったかどうかをチェック
                 int roleChoice = 0;
-                do {
+                do
+                {
                     isInvalid = false;  // 無効な選択肢があったかフラグをリセット
                     Console.WriteLine("\nどの役に得点を追加しますか(1～12)？＞");
-                    if (!int.TryParse(Console.ReadLine(), out roleChoice) || roleChoice < 1 || roleChoice > 12) {
+                    if (!int.TryParse(Console.ReadLine(), out roleChoice) || roleChoice < 1 || roleChoice > 12)
+                    {
                         Console.WriteLine("無効な選択肢です。もう一度入力してください。");
                         isInvalid = true;
-                    } else {
+                    }
+                    else
+                    {
                         // すでに得点が設定されている役が選ばれた場合、エラーメッセージを表示
                         // そうでなければ得点を設定
                         isInvalid = !AssignRole(roleChoice, score, scoreBoard)
@@ -51,12 +59,14 @@ namespace YahtzeeGame {
                 // ゲーム終了確認
                 Console.WriteLine("ゲームを続けますか？ (y/n)");
                 string continueGame = Console.ReadLine().ToLower();
-                if (continueGame != "y") {
+                if (continueGame != "y")
+                {
                     isGameOver = true;
                 }
 
                 // ゲーム終了判定
-                if (turnCount > 12 || isGameOver) {
+                if (turnCount > 12 || isGameOver)
+                {
                     break; // 12ターン以上経過したら終了
                 }
             }
@@ -67,18 +77,22 @@ namespace YahtzeeGame {
         }
 
         // サイコロ(5D6)を振るメソッド
-        static int[] RollDice() {
+        static int[] RollDice()
+        {
             Random random = new Random();
             int[] dice = new int[5]; // 5個のサイコロ
-            for (int i = 0; i < 5; i++) {
+            for (int i = 0; i < 5; i++)
+            {
                 dice[i] = random.Next(1, 7); // 1から6のランダムな値を設定
             }
             return dice;
         }
 
         // 得点を役に追加する処理
-        static bool AssignRole(int roleChoice, ScoreCalculate score, ScoreBoard scoreBoard) {
-            switch (roleChoice) {
+        static bool AssignRole(int roleChoice, ScoreCalculate score, ScoreBoard scoreBoard)
+        {
+            switch (roleChoice)
+            {
                 case 1: return AssignScore(ref scoreBoard.Ace, scoreBoard.AceToken, score.Ace);
                 case 2: return AssignScore(ref scoreBoard.Duo, scoreBoard.DuoToken, score.Duo);
                 case 3: return AssignScore(ref scoreBoard.Tray, scoreBoard.TrayToken, score.Tray);
@@ -96,18 +110,23 @@ namespace YahtzeeGame {
         }
 
         // 役の得点を設定するメソッド
-        static bool AssignScore(ref int score, bool token, int scoreValue) {
-            if (token) {
+        static bool AssignScore(ref int score, bool token, int scoreValue)
+        {
+            if (token)
+            {
                 Console.WriteLine("この役はすでに選ばれています。");
                 return false;
-            } else {
+            }
+            else
+            {
                 score = scoreValue;
                 return true;
             }
         }
 
         // 役の点数を表示
-        static void DisplayAvailableRoles(ScoreCalculate score, ScoreBoard scoreBoard) {
+        static void DisplayAvailableRoles(ScoreCalculate score, ScoreBoard scoreBoard)
+        {
             if (!scoreBoard.AceToken) Console.WriteLine($"1  : エース------> {score.Ace}");
             if (!scoreBoard.DuoToken) Console.WriteLine($"2  : デュオ------> {score.Duo}");
             if (!scoreBoard.TrayToken) Console.WriteLine($"3  : トレイ------> {score.Tray}");
@@ -123,7 +142,8 @@ namespace YahtzeeGame {
         }
 
         // 合計得点の表示
-        static void DisplayScores(ScoreBoard scoreBoard) {
+        static void DisplayScores(ScoreBoard scoreBoard)
+        {
             Console.WriteLine($"エース: {scoreBoard.Ace}");
             Console.WriteLine($"デュオ: {scoreBoard.Duo}");
             Console.WriteLine($"トレイ: {scoreBoard.Tray}");

@@ -1,7 +1,8 @@
 using System;
 using System.Linq;
 
-namespace YahtzeeGame {
+namespace YahtzeeGame
+{
     /// <summary>
     /// ダイスの出目に応じた点数計算
     /// </summary>    
@@ -29,7 +30,7 @@ namespace YahtzeeGame {
             }
 
             ScoreCalculate score = new ScoreCalculate();
-            
+
             // Ace(1の目)の点数計算
             score.Ace = score.CalcCategory(dice, 1);
             // Duo(2の目)の点数計算
@@ -97,7 +98,7 @@ namespace YahtzeeGame {
         {
             var smallStraights = new[] { new[] { 1, 2, 3, 4 }, new[] { 2, 3, 4, 5 }, new[] { 3, 4, 5, 6 } };
             var uniqueDice = dice.Distinct().ToArray();
-            
+
             foreach (var straight in smallStraights)
             {
                 if (straight.All(s => uniqueDice.Contains(s)))
