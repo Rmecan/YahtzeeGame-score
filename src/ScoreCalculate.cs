@@ -1,3 +1,4 @@
+using System;
 using System.Linq;
 
 namespace YahtzeeGame {
@@ -22,6 +23,11 @@ namespace YahtzeeGame {
         // サイコロの結果を渡して点数を計算するメソッド
         public static ScoreCalculate DoCalculate(int[] dice)
         {
+            if (dice.Length != 5)
+            {
+                throw new ArgumentException("サイコロの数は5つである必要があります。");
+            }
+
             ScoreCalculate score = new ScoreCalculate();
             
             // Ace(1の目)の点数計算
