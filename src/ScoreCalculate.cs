@@ -23,7 +23,7 @@ namespace YahtzeeGame {
         // サイコロの結果を渡して点数を計算するメソッド
         public static ScoreCalculate DoCalculate(int[] dice)
         {
-            if (dice.Length != 5)
+            if (dice == null || dice.Length != 5)
             {
                 throw new ArgumentException("サイコロの数は5つである必要があります。");
             }
