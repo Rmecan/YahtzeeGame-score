@@ -87,37 +87,93 @@ namespace YahtzeeGame
         // 得点を役に追加する処理
         static bool AssignRole(int roleChoice, ScoreCalculate score, ScoreBoard scoreBoard)
         {
-            return roleChoice switch
+            // すでに得点が設定されている役が選ばれた場合、エラーメッセージを表示
+            if (roleChoice == 1 && scoreBoard.AceToken)
             {
-                1 => AssignScore(scoreBoard.Ace, scoreBoard.AceToken, score.Ace),
-                2 => AssignScore(scoreBoard.Duo, scoreBoard.DuoToken, score.Duo),
-                3 => AssignScore(scoreBoard.Tray, scoreBoard.TrayToken, score.Tray),
-                4 => AssignScore(scoreBoard.Four, scoreBoard.FourToken, score.Four),
-                5 => AssignScore(scoreBoard.Five, scoreBoard.FiveToken, score.Five),
-                6 => AssignScore(scoreBoard.Six, scoreBoard.SixToken, score.Six),
-                7 => AssignScore(scoreBoard.Choice, scoreBoard.ChoiceToken, score.Choice),
-                8 => AssignScore(scoreBoard.FourDice, scoreBoard.FourDiceToken, score.FourDice),
-                9 => AssignScore(scoreBoard.FullHouse, scoreBoard.FullHouseToken, score.FullHouse),
-                10 => AssignScore(scoreBoard.SmallStraight, scoreBoard.SmallStraightToken, score.SmallStraight),
-                11 => AssignScore(scoreBoard.BigStraight, scoreBoard.BigStraightToken, score.BigStraight),
-                12 => AssignScore(scoreBoard.Yahtzee, scoreBoard.YahtzeeToken, score.Yahtzee),
-                _ => false,
-            };
-        }
-
-        // 役の得点を設定するメソッド
-        static bool AssignScore(int score, bool token, int scoreValue)
-        {
-            if (token)
-            {
-                Console.WriteLine("この役はすでに選ばれています。");
+                Console.WriteLine("エースはすでに選ばれています。");
                 return false;
             }
-            else
+            else if (roleChoice == 2 && scoreBoard.DuoToken)
             {
-                score = scoreValue;
-                return true;
+                Console.WriteLine("デュオはすでに選ばれています。");
+                return false;
             }
+            else if (roleChoice == 3 && scoreBoard.TrayToken)
+            {
+                Console.WriteLine("トレイはすでに選ばれています。");
+                return false;
+            }
+            else if (roleChoice == 4 && scoreBoard.FourToken)
+            {
+                Console.WriteLine("フォーはすでに選ばれています。");
+                return false;
+            }
+            else if (roleChoice == 5 && scoreBoard.FiveToken)
+            {
+                Console.WriteLine("ファイブはすでに選ばれています。");
+                return false;
+            }
+            else if (roleChoice == 6 && scoreBoard.SixToken)
+            {
+                Console.WriteLine("シックスはすでに選ばれています。");
+                return false;
+            }
+            else if (roleChoice == 7 && scoreBoard.ChoiceToken)
+            {
+                Console.WriteLine("チョイスはすでに選ばれています。");
+                return false;
+            }
+            else if (roleChoice == 8 && scoreBoard.FourDiceToken)
+            {
+                Console.WriteLine("フォーダイスはすでに選ばれています。");
+                return false;
+            }
+            else if (roleChoice == 9 && scoreBoard.FullHouseToken)
+            {
+                Console.WriteLine("フルハウスはすでに選ばれています。");
+                return false;
+            }
+            else if (roleChoice == 10 && scoreBoard.SmallStraightToken)
+            {
+                Console.WriteLine("S.ストレートはすでに選ばれています。");
+                return false;
+            }
+            else if (roleChoice == 11 && scoreBoard.BigStraightToken)
+            {
+                Console.WriteLine("B.ストレートはすでに選ばれています。");
+                return false;
+            }
+            else if (roleChoice == 12 && scoreBoard.YahtzeeToken)
+            {
+                Console.WriteLine("ヨットはすでに選ばれています。");
+                return false;
+            }
+            else if (roleChoice < 1 || roleChoice > 12)
+            {
+                Console.WriteLine("無効な選択肢です。もう一度入力してください。");
+                return false;
+            } 
+            else 
+            {
+                // 得点を設定
+                switch (roleChoice)
+                {
+                    case 1: scoreBoard.Ace = score.Ace; break;
+                    case 2: scoreBoard.Duo = score.Duo; break;
+                    case 3: scoreBoard.Tray = score.Tray; break;
+                    case 4: scoreBoard.Four = score.Four; break;
+                    case 5: scoreBoard.Five = score.Five; break;
+                    case 6: scoreBoard.Six = score.Six; break;
+                    case 7: scoreBoard.Choice = score.Choice; break;
+                    case 8: scoreBoard.FourDice = score.FourDice; break;
+                    case 9: scoreBoard.FullHouse = score.FullHouse; break;
+                    case 10: scoreBoard.SmallStraight = score.SmallStraight; break;
+                    case 11: scoreBoard.BigStraight = score.BigStraight; break;
+                    case 12: scoreBoard.Yahtzee = score.Yahtzee; break;
+                }
+                Console.WriteLine("得点を追加しました！");
+            }
+            return true;
         }
 
         // 役の点数を表示
