@@ -31,12 +31,12 @@ namespace YahtzeeGame
                 DisplayAvailableRoles(score, scoreBoard);
 
                 // 役の選択
-                bool isInvalid = false;  // 無効な選択肢があったかどうかをチェック
-                int roleChoice = 0;
+                bool isInvalid;
                 do
                 {
                     isInvalid = false;  // 無効な選択肢があったかフラグをリセット
                     Console.WriteLine("\nどの役に得点を追加しますか(1～12)？＞");
+                    int roleChoice;
                     if (!int.TryParse(Console.ReadLine(), out roleChoice) || roleChoice < 1 || roleChoice > 12)
                     {
                         Console.WriteLine("無効な選択肢です。もう一度入力してください。");
