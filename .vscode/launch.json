@@ -1,11 +1,15 @@
 {
   "version": "0.2.0",
+  "type": "setting",
+  "settings": {
+    "justMyCode": false
+  },
   "configurations": [
       {
           "name": ".NET Core Launch (console)",
           "type": "coreclr",
           "request": "launch",
-          "preLaunchTask": "build",
+          "preLaunchTask": "dotnet: clean; dotnet: build",
           "program": "${workspaceFolder}/bin/Debug/net9.0/YahtzeeGame.dll",
           "args": [],
           "cwd": "${workspaceFolder}",

@@ -17,7 +17,7 @@ namespace YahtzeeGame
             while (true)
             {
                 // ターン数の表示
-                Console.WriteLine($"{turnCount++}目");
+                Console.WriteLine($"{turnCount++}ターン目");
 
                 // サイコロ(5D6)を振る
                 int[] dice = RollDice();
@@ -57,7 +57,7 @@ namespace YahtzeeGame
                 // ゲーム終了確認
                 Console.WriteLine("ゲームを続けますか？ (y/n)");
                 string continueGame = Console.ReadLine().ToLower();
-                if (continueGame != "y")
+                if (continueGame == "n")
                 {
                     isGameOver = true;
                 }
