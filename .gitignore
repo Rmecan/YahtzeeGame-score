@@ -1,0 +1,3 @@
+bin/[D|d]ebug/
+bin/[R|r]elease/
+obj/
