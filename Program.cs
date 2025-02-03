@@ -87,22 +87,22 @@ namespace YahtzeeGame
         // 得点を役に追加する処理
         static bool AssignRole(int roleChoice, ScoreCalculate score, ScoreBoard scoreBoard)
         {
-            switch (roleChoice)
+            return roleChoice switch
             {
-                case 1: return AssignScore(scoreBoard.Ace, scoreBoard.AceToken, score.Ace);
-                case 2: return AssignScore(scoreBoard.Duo, scoreBoard.DuoToken, score.Duo);
-                case 3: return AssignScore(scoreBoard.Tray, scoreBoard.TrayToken, score.Tray);
-                case 4: return AssignScore(scoreBoard.Four, scoreBoard.FourToken, score.Four);
-                case 5: return AssignScore(scoreBoard.Five, scoreBoard.FiveToken, score.Five);
-                case 6: return AssignScore(scoreBoard.Six, scoreBoard.SixToken, score.Six);
-                case 7: return AssignScore(scoreBoard.Choice, scoreBoard.ChoiceToken, score.Choice);
-                case 8: return AssignScore(scoreBoard.FourDice, scoreBoard.FourDiceToken, score.FourDice);
-                case 9: return AssignScore(scoreBoard.FullHouse, scoreBoard.FullHouseToken, score.FullHouse);
-                case 10: return AssignScore(scoreBoard.SmallStraight, scoreBoard.SmallStraightToken, score.SmallStraight);
-                case 11: return AssignScore(scoreBoard.BigStraight, scoreBoard.BigStraightToken, score.BigStraight);
-                case 12: return AssignScore(scoreBoard.Yahtzee, scoreBoard.YahtzeeToken, score.Yahtzee);
-                default: return false;
-            }
+                1 => AssignScore(scoreBoard.Ace, scoreBoard.AceToken, score.Ace),
+                2 => AssignScore(scoreBoard.Duo, scoreBoard.DuoToken, score.Duo),
+                3 => AssignScore(scoreBoard.Tray, scoreBoard.TrayToken, score.Tray),
+                4 => AssignScore(scoreBoard.Four, scoreBoard.FourToken, score.Four),
+                5 => AssignScore(scoreBoard.Five, scoreBoard.FiveToken, score.Five),
+                6 => AssignScore(scoreBoard.Six, scoreBoard.SixToken, score.Six),
+                7 => AssignScore(scoreBoard.Choice, scoreBoard.ChoiceToken, score.Choice),
+                8 => AssignScore(scoreBoard.FourDice, scoreBoard.FourDiceToken, score.FourDice),
+                9 => AssignScore(scoreBoard.FullHouse, scoreBoard.FullHouseToken, score.FullHouse),
+                10 => AssignScore(scoreBoard.SmallStraight, scoreBoard.SmallStraightToken, score.SmallStraight),
+                11 => AssignScore(scoreBoard.BigStraight, scoreBoard.BigStraightToken, score.BigStraight),
+                12 => AssignScore(scoreBoard.Yahtzee, scoreBoard.YahtzeeToken, score.Yahtzee),
+                _ => false,
+            };
         }
 
         // 役の得点を設定するメソッド
