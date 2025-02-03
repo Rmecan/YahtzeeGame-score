@@ -1,5 +1,3 @@
-using System;
-
 namespace YahtzeeGame
 {
     class Program
@@ -14,7 +12,7 @@ namespace YahtzeeGame
             // ゲームの進行
             bool isGameOver = false;
             int turnCount = 1;
-            ScoreBoard scoreBoard = new ScoreBoard(); // スコアボードのインスタンス作成
+            ScoreBoard scoreBoard = new(); // スコアボードのインスタンス作成
 
             while (true)
             {
@@ -48,7 +46,7 @@ namespace YahtzeeGame
                     {
                         // すでに得点が設定されている役が選ばれた場合、エラーメッセージを表示
                         // そうでなければ得点を設定
-                        isInvalid = !AssignRole(roleChoice, score, scoreBoard)
+                        isInvalid = !AssignRole(roleChoice, score, scoreBoard);
                     }
                 } while (isInvalid);
 
@@ -79,7 +77,7 @@ namespace YahtzeeGame
         // サイコロ(5D6)を振るメソッド
         static int[] RollDice()
         {
-            Random random = new Random();
+            Random random = new();
             int[] dice = new int[5]; // 5個のサイコロ
             for (int i = 0; i < 5; i++)
             {
@@ -93,24 +91,24 @@ namespace YahtzeeGame
         {
             switch (roleChoice)
             {
-                case 1: return AssignScore(ref scoreBoard.Ace, scoreBoard.AceToken, score.Ace);
-                case 2: return AssignScore(ref scoreBoard.Duo, scoreBoard.DuoToken, score.Duo);
-                case 3: return AssignScore(ref scoreBoard.Tray, scoreBoard.TrayToken, score.Tray);
-                case 4: return AssignScore(ref scoreBoard.Four, scoreBoard.FourToken, score.Four);
-                case 5: return AssignScore(ref scoreBoard.Five, scoreBoard.FiveToken, score.Five);
-                case 6: return AssignScore(ref scoreBoard.Six, scoreBoard.SixToken, score.Six);
-                case 7: return AssignScore(ref scoreBoard.Choice, scoreBoard.ChoiceToken, score.Choice);
-                case 8: return AssignScore(ref scoreBoard.FourDice, scoreBoard.FourDiceToken, score.FourDice);
-                case 9: return AssignScore(ref scoreBoard.FullHouse, scoreBoard.FullHouseToken, score.FullHouse);
-                case 10: return AssignScore(ref scoreBoard.SmallStraight, scoreBoard.SmallStraightToken, score.SmallStraight);
-                case 11: return AssignScore(ref scoreBoard.BigStraight, scoreBoard.BigStraightToken, score.BigStraight);
-                case 12: return AssignScore(ref scoreBoard.Yahtzee, scoreBoard.YahtzeeToken, score.Yahtzee);
+                case 1: return AssignScore(scoreBoard.Ace, scoreBoard.AceToken, score.Ace);
+                case 2: return AssignScore(scoreBoard.Duo, scoreBoard.DuoToken, score.Duo);
+                case 3: return AssignScore(scoreBoard.Tray, scoreBoard.TrayToken, score.Tray);
+                case 4: return AssignScore(scoreBoard.Four, scoreBoard.FourToken, score.Four);
+                case 5: return AssignScore(scoreBoard.Five, scoreBoard.FiveToken, score.Five);
+                case 6: return AssignScore(scoreBoard.Six, scoreBoard.SixToken, score.Six);
+                case 7: return AssignScore(scoreBoard.Choice, scoreBoard.ChoiceToken, score.Choice);
+                case 8: return AssignScore(scoreBoard.FourDice, scoreBoard.FourDiceToken, score.FourDice);
+                case 9: return AssignScore(scoreBoard.FullHouse, scoreBoard.FullHouseToken, score.FullHouse);
+                case 10: return AssignScore(scoreBoard.SmallStraight, scoreBoard.SmallStraightToken, score.SmallStraight);
+                case 11: return AssignScore(scoreBoard.BigStraight, scoreBoard.BigStraightToken, score.BigStraight);
+                case 12: return AssignScore(scoreBoard.Yahtzee, scoreBoard.YahtzeeToken, score.Yahtzee);
                 default: return false;
             }
         }
 
         // 役の得点を設定するメソッド
-        static bool AssignScore(ref int score, bool token, int scoreValue)
+        static bool AssignScore(int score, bool token, int scoreValue)
         {
             if (token)
             {

@@ -1,6 +1,3 @@
-using System;
-using System.Linq;
-
 namespace YahtzeeGame
 {
     /// <summary>
@@ -29,50 +26,51 @@ namespace YahtzeeGame
                 throw new ArgumentException("サイコロの数は5つである必要があります。");
             }
 
-            ScoreCalculate score = new ScoreCalculate();
-
-            // Ace(1の目)の点数計算
-            score.Ace = score.CalcCategory(dice, 1);
-            // Duo(2の目)の点数計算
-            score.Duo = score.CalcCategory(dice, 2);
-            // Tray(3の目)の点数計算
-            score.Tray = score.CalcCategory(dice, 3);
-            // Four(4の目)の点数計算
-            score.Four = score.CalcCategory(dice, 4);
-            // Five(5の目)の点数計算
-            score.Five = score.CalcCategory(dice, 5);
-            // Six(6の目)の点数計算
-            score.Six = score.CalcCategory(dice, 6);
-            // チョイスの点数計算
-            score.Choice = score.CalcChoice(dice);
-            // フォーダイスの点数計算
-            score.FourDice = score.CalcFourDice(dice);
-            // フルハウスの点数計算
-            score.FullHouse = score.CalcFullHouse(dice);
-            // S.ストレートの点数計算
-            score.SmallStraight = score.CalcSmallStraight(dice);
-            // B.ストレートの点数計算
-            score.BigStraight = score.CalcBigStraight(dice);
-            // ヨットの点数計算
-            score.Yahtzee = score.CalcYahtzee(dice);
+            ScoreCalculate score = new()
+            {
+                // Ace(1の目)の点数計算
+                Ace = CalcCategory(dice, 1),
+                // Duo(2の目)の点数計算
+                Duo = CalcCategory(dice, 2),
+                // Tray(3の目)の点数計算
+                Tray = CalcCategory(dice, 3),
+                // Four(4の目)の点数計算
+                Four = CalcCategory(dice, 4),
+                // Five(5の目)の点数計算
+                Five = CalcCategory(dice, 5),
+                // Six(6の目)の点数計算
+                Six = CalcCategory(dice, 6),
+                // チョイスの点数計算
+                Choice = CalcChoice(dice),
+                // フォーダイスの点数計算
+                FourDice = CalcFourDice(dice),
+                // フルハウスの点数計算
+                FullHouse = CalcFullHouse(dice),
+                // S.ストレートの点数計算
+                SmallStraight = CalcSmallStraight(dice),
+                // B.ストレートの点数計算
+                BigStraight = CalcBigStraight(dice),
+                // ヨットの点数計算
+                Yahtzee = CalcYahtzee(dice)
+            };
 
             return score;
         }
 
         // Ace, Duo, Tray, Four, Five, Sixの計算：該当の目の合計を返す
-        private int CalcCategory(int[] dice, int category)
+        private static int CalcCategory(int[] dice, int category)
         {
             return dice.Count(d => d == category) * category;
         }
 
         // チョイスの計算：サイコロの目の合計を返す
-        private int CalcChoice(int[] dice)
+        private static int CalcChoice(int[] dice)
         {
             return dice.Sum();
         }
 
         // フォーダイスの計算：同じ目が4つならその合計を返す
-        private int CalcFourDice(int[] dice)
+        private static int CalcFourDice(int[] dice)
         {
             var grouped = dice.GroupBy(d => d).Where(g => g.Count() >= 4).FirstOrDefault();
             if (grouped != null)
@@ -83,7 +81,7 @@ namespace YahtzeeGame
         }
 
         // フルハウスの計算：3つ同じ目と2つ同じ目の組み合わせ
-        private int CalcFullHouse(int[] dice)
+        private static int CalcFullHouse(int[] dice)
         {
             var grouped = dice.GroupBy(d => d).Select(g => g.Count()).OrderBy(c => c).ToList();
             if (grouped.Count == 2 && grouped[0] == 2 && grouped[1] == 3)
@@ -94,9 +92,9 @@ namespace YahtzeeGame
         }
 
         // スモールストレートの計算：4つ連続した目（例：1,2,3,4）
-        private int CalcSmallStraight(int[] dice)
+        private static int CalcSmallStraight(int[] dice)
         {
-            var smallStraights = new[] { new[] { 1, 2, 3, 4 }, new[] { 2, 3, 4, 5 }, new[] { 3, 4, 5, 6 } };
+            var smallStraights = new[] { new[] { 1, 2, 3, 4 }, [2, 3, 4, 5], [3, 4, 5, 6] };
             var uniqueDice = dice.Distinct().ToArray();
 
             foreach (var straight in smallStraights)
@@ -110,9 +108,9 @@ namespace YahtzeeGame
         }
 
         // ビッグストレートの計算：5つ連続した目（例：1,2,3,4,5）
-        private int CalcBigStraight(int[] dice)
+        private static int CalcBigStraight(int[] dice)
         {
-            var bigStraights = new[] { new[] { 1, 2, 3, 4, 5 }, new[] { 2, 3, 4, 5, 6 } };
+            var bigStraights = new[] { new[] { 1, 2, 3, 4, 5 }, [2, 3, 4, 5, 6] };
             var uniqueDice = dice.Distinct().ToArray();
 
             foreach (var straight in bigStraights)
@@ -126,7 +124,7 @@ namespace YahtzeeGame
         }
 
         // ヨットの計算：すべて同じ目（例：1,1,1,1,1）
-        private int CalcYahtzee(int[] dice)
+        private static int CalcYahtzee(int[] dice)
         {
             if (dice.Distinct().Count() == 1)
             {

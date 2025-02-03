@@ -2,7 +2,7 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.5.2.0
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "YahtzeeGame-score", "YahtzeeGame-score.csproj", "{2BBCA2BB-802E-8FB5-DAA5-7DB21B1189ED}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "YahtzeeGame", "YahtzeeGame.csproj", "{2BBCA2BB-802E-8FB5-DAA5-7DB21B1189ED}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
